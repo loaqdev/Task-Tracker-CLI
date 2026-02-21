@@ -61,3 +61,6 @@ Directory.CreateDirectory(Path.GetDirectoryName(path)!);
 
 ## Contributing & License
 Pull requests welcome. Open issues for bugs or feature requests.
+
+## Inspired by
+This project was inspired by: https://roadmap.sh/projects/task-tracker
