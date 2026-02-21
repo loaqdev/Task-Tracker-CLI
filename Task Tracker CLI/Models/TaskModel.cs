@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Task_Tracker_CLI.Models;
 
 internal class TaskModel
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    [JsonProperty(propertyName: "id")]
+    public int Id { get; set; }
 
+    [JsonProperty(propertyName: "description")]
     public string Description { get; set; } = string.Empty;
 
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum TaskStatus
     {
         todo,
@@ -17,8 +19,12 @@ internal class TaskModel
         done
     }
 
-    public DateTime CreatedAt { get; set; }
+    [JsonProperty(propertyName: "status")]
+    public TaskStatus Status { get; set; } = TaskStatus.todo;
 
-    public DateTime UpdatedAt { get; set; }
+    [JsonProperty(propertyName: "creationDate")]
+    public string CreatedAt { get; set; } = string.Empty;
 
+    [JsonProperty(propertyName: "updationDate")]
+    public string UpdatedAt { get; set; } = string.Empty;
 }
